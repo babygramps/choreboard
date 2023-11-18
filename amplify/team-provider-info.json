@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-choreboard-dev-153121-authRole",
+      "UnauthRoleArn": "arn:aws:iam::039593144912:role/amplify-choreboard-dev-153121-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::039593144912:role/amplify-choreboard-dev-153121-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-choreboard-dev-153121-deployment",
+      "UnauthRoleName": "amplify-choreboard-dev-153121-unauthRole",
+      "StackName": "amplify-choreboard-dev-153121",
+      "StackId": "arn:aws:cloudformation:us-west-1:039593144912:stack/amplify-choreboard-dev-153121/94c8ff80-866a-11ee-a9c6-06c575242651",
+      "AmplifyAppId": "dmj3pywejx8s1"
+    }
+  }
+}
