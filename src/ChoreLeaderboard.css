@@ -72,37 +72,38 @@ h1 {
   margin-bottom: 1em;
 }
 
-/* Style the chore list */
-.unassigned-chores ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.unassigned-chores li {
-  font-size: 1.2em;
-  margin: 0.5em 0;
+/* Style the chore items in the unassigned chores list */
+.chore-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
   padding: 0.5em 1em;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.unassigned-chores li:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+  margin: 0.5em 0;
 }
 
 /* Add some spacing for chore items */
-.unassigned-chores li + li {
+.unassigned-chores .chore-item + .chore-item {
   margin-top: 0.5em;
 }
 
-/* Add chore item hover effect */
-.unassigned-chores li:hover {
-  background-color: var(--primary-color);
-  color: white;
-  transform: scale(1.05);
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+/* Animation for the title */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for the week display */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
