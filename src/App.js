@@ -74,7 +74,7 @@ const handleDrop = (e, housemateName) => {
 />
       <div>
         <h2>Unassigned Chores</h2>
-        <ul>
+        <ul style={{listStyleType: 'none'}}>
           {chores.map((chore, index) => (
               <li
               key={index}
@@ -82,8 +82,6 @@ const handleDrop = (e, housemateName) => {
               onDragStart={(e) => handleDragStart(e, chore)}
             >
               {chore}
-            
-                
             </li>
           ))}
         </ul>
