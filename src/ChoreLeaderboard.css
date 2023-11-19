@@ -1,51 +1,108 @@
 /* ChoreLeaderboard.css */
 
-.chore-leaderboard-container {
-    text-align: center;
-    background-color: var(--secondary-color);
-    padding: 2em 0;
-    min-height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .chore-leaderboard-container h1 {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 0.5em;
-  }
-  
-  .week-display {
-    font-size: 1.2em;
-    color: var(--text-secondary);
-    margin-bottom: 2em;
-  }
-  
-  /* Animation for the title */
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  .chore-leaderboard-container h1 {
-    animation: 0.5s ease-out 0s 1 slideInFromLeft;
-  }
-  
-  /* Animation for the week display */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .week-display {
-    animation: fadeIn 1s ease-out;
-  }
-  
+/* Reset default margin and padding for the whole page */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a modern font family */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Global styles */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #f2f2f2;
+  --text-primary: #333;
+  --text-secondary: #777;
+}
+
+/* App container styles */
+.app-container {
+  text-align: center;
+  background-color: var(--secondary-color);
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header styles */
+h1 {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  animation: slideInFromLeft 0.5s ease-out 0s 1 forwards;
+}
+
+/* Week display styles */
+.week-display {
+  font-size: 1.2em;
+  color: var(--text-secondary);
+  margin-bottom: 2em;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Housemate list styles (customize as needed) */
+.housemate-list {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.housemate-list h2 {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+}
+
+/* Unassigned chores list styles */
+.unassigned-chores {
+  margin-top: 2em;
+}
+
+.unassigned-chores h2 {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+}
+
+/* Style the chore list */
+.unassigned-chores ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.unassigned-chores li {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+  background-color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.unassigned-chores li:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Add some spacing for chore items */
+.unassigned-chores li + li {
+  margin-top: 0.5em;
+}
+
+/* Add chore item hover effect */
+.unassigned-chores li:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}

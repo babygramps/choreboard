@@ -3,6 +3,8 @@ import HousemateForm from './AddHousemateForm';
 import HousemateList from './HousemateList';
 import AddChoreForm from './AddChoreForm';
 
+import './ChoreLeaderboard.css'
+
 const App = () => {
   const [housemates, setHousemates] = useState([]);
   const [chores, setChores] = useState(["Bathrooms", "Commons", "Kitchen", "Vacation"]);
