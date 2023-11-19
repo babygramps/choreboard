@@ -1,0 +1,61 @@
+/* styles.css */
+
+:root {
+    --primary-color: #5d55fa; /* A vibrant purple */
+    --secondary-color: #f7f6fd; /* A very light purple */
+    --accent-color: #fa6555; /* A bright red-orange for accents */
+    --text-primary: #333;
+    --text-secondary: #666;
+    --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    font-family: var(--font-stack);
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+  }
+  
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+  
+  button, input, select {
+    font-family: inherit;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: var(--border-radius);
+    margin: 0.5em;
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: darken(var(--primary-color), 10%);
+    }
+  }
+  
+  input, select {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 2em auto;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+  }
+  
