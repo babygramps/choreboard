@@ -13,10 +13,6 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-choreboard-dev-153121-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "auth": {
-        "choreboard35d443c6": {},
-        "userPoolGroups": {}
-      },
       "function": {
         "choreboard35d443c6DefineAuthChallenge": {
           "deploymentBucketName": "amplify-choreboard-dev-153121-deployment",
@@ -31,6 +27,9 @@
           "deploymentBucketName": "amplify-choreboard-dev-153121-deployment",
           "s3Key": "amplify-builds/choreboard35d443c6VerifyAuthChallengeResponse-4838442b413046655265-build.zip"
         }
+      },
+      "auth": {
+        "choreBoard": {}
       }
     }
   }

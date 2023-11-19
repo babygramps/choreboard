@@ -1,11 +1,11 @@
 export type AmplifyDependentResourcesAttributes = {
   "auth": {
-    "choreboard35d443c6": {
+    "choreBoard": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "CreatedSNSRole": "string",
-      "HostedUIDomain": "string",
-      "OAuthMetadata": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"

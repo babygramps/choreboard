@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import {getCurrentUser} from 'aws-amplify/auth';
+import {fetchUserAttributes} from 'aws-amplify/auth';
+import React, {useState, useEffect} from 'react';
 import HousemateForm from './AddHousemateForm';
 import HousemateList from './HousemateList';
 import AddChoreForm from './AddChoreForm';
@@ -17,7 +19,7 @@ const signUpConfig = {
     signUpFields: [
         {
             label: 'First name',
-            key: 'first_name',
+            key: 'given_name',
             required: true,
             displayOrder: 1,
             type: 'text',
@@ -34,6 +36,7 @@ const signUpConfig = {
 }
 
 const App = ({signOut, user}) => {
+
     const [housemates, setHousemates] = useState([
         {
             name: "Rick",
@@ -54,6 +57,31 @@ const App = ({signOut, user}) => {
         }
     ]);
     const [chores, setChores] = useState(["Bathrooms", "Commons", "Kitchen", "Vacation"]);
+
+    const [userAttributes, setUserAttributes] = useState(null);
+
+    useEffect(() => {
+        async function fetchAttributes() {
+            try {
+                const attributes = await handleFetchUserAttributes();
+                setUserAttributes(attributes);
+            } catch (error) {
+                console.error('Error fetching user attributes:', error);
+            }
+        }
+
+        fetchAttributes();
+    }, []);
+
+    async function handleFetchUserAttributes() {
+        try {
+            const userAttributes = await fetchUserAttributes();
+            console.log(userAttributes);
+            return userAttributes
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // Function to add a new housemate
     const addHousemate = (name) => {
@@ -194,13 +222,15 @@ const App = ({signOut, user}) => {
             return housemate;
         }));
     };
-
+    if (!userAttributes) { // Render a loading spinner or a placeholder
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="app-container">
-            <h1>Hello {
-                user.signInDetails.loginId
-            }</h1>
+            <h3>Welcome back, {
+                userAttributes.given_name
+            }</h3>
             <button onClick={signOut}>Sign out</button>
             <h1>Chore Leaderboard</h1>
             <div className="week-display">Week of: {weekRange}</div>
@@ -240,4 +270,4 @@ const App = ({signOut, user}) => {
     );
 };
 
-export default withAuthenticator(App, {signUpConfig});
+export default withAuthenticator(App);
