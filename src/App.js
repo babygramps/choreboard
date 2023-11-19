@@ -4,7 +4,36 @@ import HousemateList from './HousemateList';
 import AddChoreForm from './AddChoreForm';
 import './ChoreLeaderboard.css'; // Import the CSS file
 
-const App = () => {
+import {Amplify} from 'aws-amplify';
+
+import {withAuthenticator} from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import config from './amplifyconfiguration.json';
+Amplify.configure(config);
+
+const signUpConfig = {
+    header: 'Sign up please',
+    hideAllDefaults: true,
+    signUpFields: [
+        {
+            label: 'First name',
+            key: 'first_name',
+            required: true,
+            displayOrder: 1,
+            type: 'text',
+            placeholder: 'First name'
+        }, {
+            label: 'Last name',
+            key: 'family_name',
+            required: true,
+            displayOrder: 2,
+            type: 'text',
+            placeholder: 'Last name'
+        }
+    ]
+}
+
+const App = ({signOut, user}) => {
     const [housemates, setHousemates] = useState([
         {
             name: "Rick",
@@ -169,6 +198,10 @@ const App = () => {
 
     return (
         <div className="app-container">
+            <h1>Hello {
+                user.signInDetails.loginId
+            }</h1>
+            <button onClick={signOut}>Sign out</button>
             <h1>Chore Leaderboard</h1>
             <div className="week-display">Week of: {weekRange}</div>
             <HousemateForm addHousemate={addHousemate}/>
@@ -207,4 +240,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default withAuthenticator(App, {signUpConfig});

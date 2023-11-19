@@ -9,7 +9,29 @@
       "UnauthRoleName": "amplify-choreboard-dev-153121-unauthRole",
       "StackName": "amplify-choreboard-dev-153121",
       "StackId": "arn:aws:cloudformation:us-west-1:039593144912:stack/amplify-choreboard-dev-153121/94c8ff80-866a-11ee-a9c6-06c575242651",
-      "AmplifyAppId": "dmj3pywejx8s1"
+      "AmplifyAppId": "dmj3pywejx8s1",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-choreboard-dev-153121-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "choreboard35d443c6": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "choreboard35d443c6DefineAuthChallenge": {
+          "deploymentBucketName": "amplify-choreboard-dev-153121-deployment",
+          "s3Key": "amplify-builds/choreboard35d443c6DefineAuthChallenge-696a714c315763646a59-build.zip"
+        },
+        "choreboard35d443c6CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-choreboard-dev-153121-deployment",
+          "s3Key": "amplify-builds/choreboard35d443c6CreateAuthChallenge-747576334d6e4f586170-build.zip"
+        },
+        "choreboard35d443c6VerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "6LfUaBQpAAAAAFIJweOKSk22SX_jG8JZ6DSC0Awp",
+          "deploymentBucketName": "amplify-choreboard-dev-153121-deployment",
+          "s3Key": "amplify-builds/choreboard35d443c6VerifyAuthChallengeResponse-4838442b413046655265-build.zip"
+        }
+      }
     }
   }
 }
