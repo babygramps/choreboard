@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {useNavigate} from "react-router-dom";
+import React, {useState, useContext, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {signOut} from 'aws-amplify/auth';
 import {
     Container,
@@ -12,25 +12,23 @@ import {
 } from '@mui/material';
 import {useTheme} from '@mui/material/styles';
 
+import {createUser} from './graphql/mutations';
+import {getUser} from './graphql/queries';
 import HousemateForm from './AddHousemateForm';
 import HousemateList from './HousemateList';
 import AddChoreForm from './AddChoreForm';
-import ChoreManager from './ChoreManager'
+import ChoreManager from './ChoreManager';
 import {AuthContext} from './helperFunctions/Auth';
 
-
-import {Amplify} from 'aws-amplify';
-
-import '@aws-amplify/ui-react/styles.css';
-import config from './amplifyconfiguration.json';
-Amplify.configure(config);
+import {generateClient} from 'aws-amplify/api';
+const client = generateClient()
 
 
 const Choreboard = () => {
-
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const navigate = useNavigate();
+    const {userAttributes} = useContext(AuthContext);
     const [housemates, setHousemates] = useState([
         {
             name: "Rick",
@@ -51,11 +49,48 @@ const Choreboard = () => {
         }
     ]);
     const [chores, setChores] = useState(["Bathrooms", "Commons", "Kitchen", "Vacation"]);
+    const [currentlySignedInUser, setCurrentlySignedInUser] = useState(null);
 
-    const {userAttributes} = useContext(AuthContext)
+    useEffect(() => {
+        const checkAndRegisterUser = async () => {
+            try { // Get the user data from the GraphQL API
+                const userData = await client.graphql({
+                    query: getUser,
+                    variables: {
+                        id: userAttributes.sub
+                    }
+                });
+                if (userData.data.getUser) { // User is already registered
+                    setCurrentlySignedInUser(userData.data.getUser);
+                    console.log(userData.data.getUser)
+                } else { // Register the user
 
-    const navigate = useNavigate();
+                    const userDetails = {
+                        id: userAttributes.sub,
+                        email: userAttributes.email,
+                        first_name: userAttributes.given_name,
+                        last_name: userAttributes.family_name
+                    }
 
+                    const newUser = await client.graphql({
+                        query: createUser,
+                        variables: {
+                            input: userDetails
+                        }
+                    });
+                    setCurrentlySignedInUser(newUser.data.createUser);
+                }
+            } catch (error) {
+                console.error('Error checking or registering user:', error);
+            }
+        };
+
+        if (userAttributes) {
+            checkAndRegisterUser();
+        } else {
+            navigate("/signin");
+        }
+    }, [userAttributes, navigate]);
 
     // Function to add a new housemate
     const addHousemate = (name) => {
@@ -245,7 +280,7 @@ const Choreboard = () => {
                         xs={12}
                         md={6}>
                         <Typography variant="h4" gutterBottom>Welcome back, {
-                            userAttributes.given_name
+                            currentlySignedInUser ? currentlySignedInUser.first_name : '...'
                         }</Typography>
                         <Typography variant="h5" gutterBottom
                             sx={
@@ -253,7 +288,7 @@ const Choreboard = () => {
                         }>Week of: {weekRange}</Typography>
                         <HousemateForm addHousemate={addHousemate}/>
                         <AddChoreForm addChoreToList={addChoreToList}/>
-                        <Button variant="contained" color="primary"
+                        <Button variant="contained" color="error"
                             onClick={handleSignOut}
                             sx={
                                 {mt: 2}

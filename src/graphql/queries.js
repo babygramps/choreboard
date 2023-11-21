@@ -1,7 +1,8 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getHouse = /* GraphQL */ `
+export const getHouse = /* GraphQL */
+`
   query GetHouse($id: ID!) {
     getHouse(id: $id) {
       id
@@ -20,7 +21,8 @@ export const getHouse = /* GraphQL */ `
     }
   }
 `;
-export const listHouses = /* GraphQL */ `
+export const listHouses = /* GraphQL */
+`
   query ListHouses(
     $filter: ModelHouseFilterInput
     $limit: Int
@@ -39,7 +41,8 @@ export const listHouses = /* GraphQL */ `
     }
   }
 `;
-export const getHousemate = /* GraphQL */ `
+export const getHousemate = /* GraphQL */
+`
   query GetHousemate($id: ID!) {
     getHousemate(id: $id) {
       id
@@ -67,7 +70,8 @@ export const getHousemate = /* GraphQL */ `
     }
   }
 `;
-export const listHousemates = /* GraphQL */ `
+export const listHousemates = /* GraphQL */
+`
   query ListHousemates(
     $filter: ModelHousemateFilterInput
     $limit: Int
@@ -88,7 +92,8 @@ export const listHousemates = /* GraphQL */ `
     }
   }
 `;
-export const getInvitation = /* GraphQL */ `
+export const getInvitation = /* GraphQL */
+`
   query GetInvitation($id: ID!) {
     getInvitation(id: $id) {
       id
@@ -108,7 +113,8 @@ export const getInvitation = /* GraphQL */ `
     }
   }
 `;
-export const listInvitations = /* GraphQL */ `
+export const listInvitations = /* GraphQL */
+`
   query ListInvitations(
     $filter: ModelInvitationFilterInput
     $limit: Int
@@ -129,7 +135,8 @@ export const listInvitations = /* GraphQL */ `
     }
   }
 `;
-export const getUser = /* GraphQL */ `
+export const getUser = /* GraphQL */
+`
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
@@ -146,11 +153,14 @@ export const getUser = /* GraphQL */ `
       createdAt
       updatedAt
       userHousemateId
+      first_name
+      last_name
       __typename
     }
   }
 `;
-export const listUsers = /* GraphQL */ `
+export const listUsers = /* GraphQL */
+`
   query ListUsers(
     $filter: ModelUserFilterInput
     $limit: Int
@@ -161,6 +171,8 @@ export const listUsers = /* GraphQL */ `
         id
         email
         createdAt
+        first_name
+        last_name
         updatedAt
         userHousemateId
         __typename

@@ -5,8 +5,6 @@ import '@aws-amplify/ui-react/styles.css';
 import {Navigate, useNavigate} from "react-router-dom";
 
 
-import {signOut} from 'aws-amplify/auth';
-
 export default function TestAuthenticator() {
 
     const [user, setUser] = useState(null);
