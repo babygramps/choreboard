@@ -1,0 +1,91 @@
+/* LandingPage.css */
+
+.landing-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  .landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  nav .btn {
+    padding: 0.6rem 1.2rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-signin {
+    background-color: transparent;
+    color: #333;
+  }
+  
+  .btn-signup {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-signup:hover {
+    background-color: #0056b3;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    color: #fff;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;
+  }
+  
+  .btn-primary {
+    background-color: #ffcc29;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary:hover {
+    background-color: #dbb028;
+  }
+  
+  /* Include responsive design breakpoints as needed */
+  @media (max-width: 768px) {
+    .landing-header {
+      flex-direction: column;
+    }
+  
+    nav .btn {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+  
